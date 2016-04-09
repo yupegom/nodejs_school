@@ -1,0 +1,16 @@
+var fs = require('fs')
+var path = require('path')
+
+fs.readdir(process.argv[2], collectResult) 
+var filteredFiles = []
+
+function isSameExtension(value) {
+   return path.extname(value) == '.' + process.argv[3]
+}
+
+function collectResult(err, files) {
+  var filteredFiles = files.filter(isSameExtension)
+  filteredFiles.forEach(function(file) {
+    console.log(file);
+  });
+}
